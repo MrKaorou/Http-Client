@@ -1,5 +1,6 @@
-import net.sf.json.JSONObject;
-import org.apache.commons.httpclient.HttpStatus;
+package com.ruidest.http;
+
+import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -7,21 +8,24 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.URLDecoder;
 
 /**
  * Apache-httpClient 工具类
+ *
  * @author Mrkaorou
+ * @date 2017/12/15
  */
 public class HttpRequestUtils {
     /**
      * 日志记录
      */
-    private static Logger logger = LoggerFactory.getLogger(HttpRequestUtils.class);
+    private static Logger logger = LogManager.getLogger(HttpRequestUtils.class);
 
     /**
      * httpPost
@@ -70,7 +74,7 @@ public class HttpRequestUtils {
                     }
                     /**把json字符串转换成json对象**/
                     if (str.length() != 0) {
-                        jsonResult = JSONObject.fromObject(str);
+                        jsonResult = new JSONObject(str);
                     }
                 } catch (Exception e) {
                     logger.error("post请求提交失败:" + url, e);
@@ -111,7 +115,7 @@ public class HttpRequestUtils {
                 String strResult = EntityUtils.toString(response.getEntity());
                 /**把json字符串转换成json对象**/
                 if (strResult.length() != 0) {
-                    jsonResult = JSONObject.fromObject(strResult);
+                    jsonResult = new JSONObject(strResult);
                 }
                 url = URLDecoder.decode(url, "UTF-8");
             } else {
