@@ -23,7 +23,7 @@ import java.net.URLDecoder;
  */
 public class HttpRequestUtils {
 
-    // 日志记录ccc
+    // 日志记录ddd
     private static Logger logger = LogManager.getLogger(HttpRequestUtils.class);
 
     /**
