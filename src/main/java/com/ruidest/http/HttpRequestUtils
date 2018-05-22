@@ -22,13 +22,8 @@ import java.net.URLDecoder;
  * @date 2017/12/15
  */
 public class HttpRequestUtils {
-    /**
-<<<<<<< HEAD
-     * 日志记录aaa
-=======
-     * 日志记录ccc
->>>>>>> branch 'master' of https://github.com/MrKaorou/http-client.git
-     */
+
+    //日志记录aaa
     private static Logger logger = LogManager.getLogger(HttpRequestUtils.class);
 
     /**
